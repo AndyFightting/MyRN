@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import {StyleSheet,View, Text} from 'react-native';
 
-export default class CommonTitleView extends Component{
+export default class TabTitleView extends Component{
 
    render(){
        return(

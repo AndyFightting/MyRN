@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react";
-import {TabBarIOS,} from "react-native";
+import {TabBarIOS} from "react-native";
 
 import WxView from './WxView';
 import TxlView from './TxlView';
@@ -16,9 +16,6 @@ export default class TabView extends Component {
         this.state = {
             selectedTab: 'wTab',
             wxBadge: 0,
-            txlBadge: 0,
-            fxBadge: 0,
-            woBadge: 0,
         };
     }
 
@@ -40,49 +37,43 @@ export default class TabView extends Component {
                             wxBadge: this.state.wxBadge+1,
                         });
                     }}>
-                    <WxView/>
+                    <WxView  nav = {this.props.nav}/>
                 </TabBarIOS.Item>
 
                 <TabBarIOS.Item
                     icon={require('../../images/me@3x.png')}
                     title="通讯录"
                     selected={this.state.selectedTab === 'txlTab'}
-                    badge={this.state.txlBadge>0 ? this.state.txlBadge : undefined}
                     onPress={() => {
                         this.setState({
                             selectedTab: 'txlTab',
-                            txlBadge: this.state.txlBadge+1,
                         });
                     }}>
-                    <TxlView/>
+                    <TxlView  nav = {this.props.nav}/>
                 </TabBarIOS.Item>
 
                 <TabBarIOS.Item
                     icon={require('../../images/me@3x.png')}
                     title="发现"
                     selected={this.state.selectedTab === 'fxTab'}
-                    badge={this.state.fxBadge>0 ? this.state.fxBadge : undefined}
                     onPress={() => {
                         this.setState({
                             selectedTab: 'fxTab',
-                            fxBadge: this.state.fxBadge+1,
                         });
                     }}>
-                    <FxView/>
+                    <FxView  nav = {this.props.nav}/>
                 </TabBarIOS.Item>
 
                 <TabBarIOS.Item
                     icon={require('../../images/me@3x.png')}
                     title="我"
                     selected={this.state.selectedTab === 'wTab'}
-                    badge={this.state.woBadge>0 ? this.state.woBadge : undefined}
                     onPress={() => {
                         this.setState({
                             selectedTab: 'wTab',
-                            woBadge: this.state.woBadge+1,
                         });
                     }}>
-                    <WoView/>
+                    <WoView nav = {this.props.nav}/>
                 </TabBarIOS.Item>
             </TabBarIOS>
         );

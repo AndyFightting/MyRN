@@ -8,7 +8,7 @@ import {
     View,
     Text,
 } from 'react-native';
-import TitleView from './CommonTitleView';
+import TitleView from './TabTitleView';
 
 
 export default class TxlView extends Component{

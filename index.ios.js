@@ -5,6 +5,6 @@
  */
 
 import {AppRegistry} from 'react-native';
-import TabView from './ios/View/TabView';
+import MyNav from './ios/View/MyNav';
 
-AppRegistry.registerComponent('MyRN', () => TabView);
+AppRegistry.registerComponent('MyRN', () => MyNav);

@@ -14,7 +14,7 @@ export default class TabView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'wTab',
+            selectedTab: 'txlTab',
             wxBadge: 0,
         };
     }

@@ -18,7 +18,7 @@ export default class BackTitleView extends Component {
     render() {
         let rightPress = this.props.rightPress; //使用：rightPress={()=>{ }}
         let rightTitle = this.props.rightTitle; //使用：rightTitle = '保存'
-        let rightImage = this.props.rightImage; //与上面二选一：rightImage={require('../../images/icon0.png')}
+        let rightImage = this.props.rightImage; //与rightTitle二选一：rightImage={require('../../images/icon0.png')}
         var rightTap = false;
 
         let rightView;

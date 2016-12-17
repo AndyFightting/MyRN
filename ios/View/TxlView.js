@@ -8,9 +8,11 @@ import {
     View,
     Text,
     Alert,
+    ScrollView,
 } from 'react-native';
 import TitleView from './TabTitleView';
 import MenuView from './MenuView';
+import HeaderView from './HeaderView';
 
 
 export default class TxlView extends Component {
@@ -25,22 +27,24 @@ export default class TxlView extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TitleView titleName='通讯录'/>
+                <HeaderView/>
 
+                <ScrollView automaticallyAdjustContentInsets={false}>
                 <View style={styles.menuBackView}>
-                    <MenuView name='充话费' image={require('../../images/icon4.png')} onPress={()=>this.menuPress(0).bind(this)}/>
-                    <MenuView name='看电影' image={require('../../images/icon5.png')} onPress={()=>this.menuPress(1).bind(this)}/>
-                    <MenuView name='应用' image={require('../../images/icon6.png')} onPress={()=>this.menuPress(2).bind(this)}/>
-                    <MenuView name='豆瓣' image={require('../../images/icon7.png')} onPress={()=>this.menuPress(3).bind(this)}/>
-                    <MenuView name='关注' image={require('../../images/icon8.png')} onPress={()=>this.menuPress(4).bind(this)}/>
+                    <MenuView name='充话费' image={require('../../images/icon4.png')} onPress={()=>this.menuPress(0)}/>
+                    <MenuView name='看电影' image={require('../../images/icon5.png')} onPress={()=>this.menuPress(1)}/>
+                    <MenuView name='应用' image={require('../../images/icon6.png')} onPress={()=>this.menuPress(2)}/>
+                    <MenuView name='豆瓣' image={require('../../images/icon7.png')} onPress={()=>this.menuPress(3)}/>
+                    <MenuView name='关注' image={require('../../images/icon8.png')} onPress={()=>this.menuPress(4)}/>
                 </View>
                 <View style={styles.menuBackView}>
-                    <MenuView name='订单' image={require('../../images/icon9.png')} onPress={()=>this.menuPress(5).bind(this)}/>
-                    <MenuView name='投资' image={require('../../images/icon10.png')} onPress={()=>this.menuPress(6).bind(this)}/>
-                    <MenuView name='游戏' image={require('../../images/icon11.png')} onPress={()=>this.menuPress(7).bind(this)}/>
-                    <MenuView name='电视剧' image={require('../../images/icon5.png')} onPress={()=>this.menuPress(8).bind(this)}/>
-                    <MenuView name='充值' image={require('../../images/icon4.png')} onPress={()=>this.menuPress(9).bind(this)}/>
+                    <MenuView name='订单' image={require('../../images/icon9.png')} onPress={()=>this.menuPress(5)}/>
+                    <MenuView name='投资' image={require('../../images/icon10.png')} onPress={()=>this.menuPress(6)}/>
+                    <MenuView name='游戏' image={require('../../images/icon11.png')} onPress={()=>this.menuPress(7)}/>
+                    <MenuView name='电视剧' image={require('../../images/icon5.png')} onPress={()=>this.menuPress(8)}/>
+                    <MenuView name='充值' image={require('../../images/icon4.png')} onPress={()=>this.menuPress(9)}/>
                 </View>
+                </ScrollView>
             </View>
         );
     }

@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: 45,
-        height: 45,
+        width: 35,
+        height: 35,
     },
 
     text: {
         color: 'gray',
-        fontSize: 13,
+        fontSize: 11,
         marginTop: 5,
     },
 });

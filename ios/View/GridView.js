@@ -19,16 +19,7 @@ export default class GridView extends Component {
     constructor(props) {
         super(props);
 
-        var dataBlob = [
-            {'id': 1, 'name': '阿贵1', 'detail': 'hello-world3'},
-            {'id': 2, 'name': '阿贵2', 'detail': 'hello-world4'},
-            {'id': 3, 'name': '阿贵3', 'detail': 'hello-world'},
-            {'id': 3, 'name': '阿贵4', 'detail': 'hello-world'},
-            {'id': 4, 'name': '阿贵5', 'detail': 'hello-world'},
-            {'id': 5, 'name': '阿贵', 'detail': 'hello-world'},
-            {'id': 6, 'name': '阿贵', 'detail': 'hello-world'},
-
-        ];
+        var dataBlob = [0,1,2,3,4,5,6];
 
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
@@ -63,19 +54,12 @@ export default class GridView extends Component {
                     contentContainerStyle={styles.contentStyle}
                     dataSource={this.state.dataSource}
                     renderRow={this.listItem.bind(this)}
-                    scrollEventThrottle={0} //值越大，onScroll() 对滚动越不敏感，默认0
                     onScroll={(event)=>{
                           console.log('滚动中------offSetY:    '+event.nativeEvent.contentOffset.y);
                     }}
-
                     onMomentumScrollEnd={(event)=>{
                           console.log('onMomentumScrollEnd 滚动结束------offSetY:    '+event.nativeEvent.contentOffset.y);
                     }}
-
-                    onScrollAnimationEnd={(event)=>{//这个没效果啊，用上面的 onMomentumScrollEnd
-                          console.log('滚动结束------offSetY:    '+event.nativeEvent.contentOffset.y);
-                    }}
-
                 />
             </View>
         );
@@ -110,7 +94,6 @@ const styles = StyleSheet.create({
         paddingTop: 6,
     },
     contentStyle: {
-        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },

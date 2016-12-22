@@ -9,8 +9,6 @@ import {
     Text,
     Alert,
     Image,
-    ScrollView,
-    TouchableWithoutFeedback,
     ListView,
     Dimensions,
     PixelRatio,
@@ -25,22 +23,17 @@ const BANNER_IMGS = [
     require('../../images/3.jpg'),
     require('../../images/4.jpg'),
 ];
-const len = 160;
-
 export default class TxlView extends Component {
 
-    // 构造
     constructor(props) {
         super(props);
 
-
-        var listDataBlob = [0,1,2,3];
-
+        var listDataBlob = [0, 1];
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
         var dataSource = new ViewPager.DataSource({
             pageHasChanged: (p1, p2) => p1 !== p2,
         });
+
         this.state = {
             screenWidth: this.screenWidth(),
             screenHeight: this.screenHeight(),
@@ -49,7 +42,6 @@ export default class TxlView extends Component {
             listData: ds.cloneWithRows(listDataBlob),
         };
     }
-
 
     screenWidth() {
         return Dimensions.get('window').width;
@@ -62,8 +54,6 @@ export default class TxlView extends Component {
     pxRatio() {
         return PixelRatio.get();//一个点有几个像素，像android的一个px和dp比例似的
     }
-
-
 
     render() {
         return (
@@ -81,8 +71,8 @@ export default class TxlView extends Component {
         );
     }
 
-        renderHeader = () => {
-        return(
+    renderHeader = () => {
+        return (
             <View>
                 <ViewPager
                     style={{height:130}}
@@ -112,26 +102,74 @@ export default class TxlView extends Component {
              sectionID: number,
              rowID: number,
              highlightRow: (sectionID: number, rowID: number) => void) {
-        let itemWidth = this.state.screenWidth / 3;
+
+        let item;
+        if (rowID == 0){
+            item =this.item0();
+        }else if (rowID == 1){
+            item =this.item1();
+        }else {
+            item =this.item0();
+        }
+
         return (
-            <View style={{height: 100,flexDirection:'row',marginBottom:10}}>
-                {this.listItemView()}
-                {this.listItemView()}
-                {this.listItemView()}
-            </View>
-        );
-    };
-
-    listItemView(){
-        return(
             <View style={{flex:1}}>
-                <Image style={{height:80,width:this.state.screenWidth/-10,margin:5}} source={require('../../images/3.jpg')}/>
-                <Text style={{alignSelf:'center'}}>iPhone</Text>
-
+                {item}
             </View>
         );
     };
 
+
+    item0() {
+        let itemWidth = this.state.screenWidth / 4 * 1.53 - 2;
+        return (
+            <View style={{flex:1}}>
+                {this.itemHeader('#f6b7b7',require('../../images/f_03.png'))}
+                <View style={{flex:1,flexDirection:'row'}}>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_03.png')}/>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_05.png')}/>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_07.png')}/>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_09.png')}/>
+                </View>
+            </View>
+
+        );
+    }
+
+    item1() {
+        let itemWidth = this.state.screenWidth / 3 * 1.26 - 2;
+        return (
+            <View style={{flex:1}}>
+                {this.itemHeader('#becfec',require('../../images/f_07.png'))}
+                <View style={{flex:1,flexDirection:'row'}}>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_17.png')}/>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_15.png')}/>
+                    <Image resizeMode='contain' style={{height:itemWidth,flex:1}}
+                           source={require('../../images/ssf_19.png')}/>
+                </View>
+            </View>
+
+        );
+    }
+
+
+    itemHeader(lineColor,image) {
+        return (
+            <View
+                style={{height:25,backgroundColor:'#eeeeee',flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+                <View style={{backgroundColor:lineColor,height:1,width:30}}/>
+                <Image style={{width:20,height:22}} source={image}/>
+                <View style={{backgroundColor:lineColor,height:1,width:30}}/>
+
+            </View>
+        );
+    }
 
     renderPage(data, pageID) {
         return (
@@ -163,9 +201,9 @@ const styles = StyleSheet.create({
         paddingTop: 8,
         paddingBottom: 8,
     },
-    listView:{
-      marginBottom:50,
-        paddingBottom:10,
+    listView: {
+        marginBottom: 50,
+        paddingBottom: 10,
     },
 
 
